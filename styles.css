@@ -136,6 +136,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
 
 .about h2 { margin-top: 18px; }
 .about .txt { font-size: 20px; line-height: 27px; margin-top: 24px; max-width: 480px; }
+.about .txt p + p { margin-top: 16px; }
 .about .btn { margin-top: 28px; }
 
 .btn-social { gap: 10px; padding-left: 15px; padding-right: 15px; }
