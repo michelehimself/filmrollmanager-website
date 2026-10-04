@@ -32,6 +32,7 @@
         <a class="btn" href="#download">Download</a>
         <a class="btn white" href="#how">How it works</a>
       </div>
+      <p class="hero-note">Currently available for macOS.</p>
       <div class="shot"><img src="assets/app-manager.png" width="2292" height="1340" alt="The FilmRoll Manager window showing a list of scanned frames with camera, lens, film, rating and date"></div>
     </section>
 
@@ -66,7 +67,10 @@
         <div>
           <p class="eyebrow">One more thing</p>
           <h3>Struggling to organize your physical film rolls?</h3>
-          <p class="txt">Filing negatives is tedious when you can barely tell the frames apart. A contact sheet shows the whole roll at a glance, no light table or loupe needed.</p>
+          <div class="txt">
+            <p>Filing negatives is tedious when you can barely tell the frames apart. A contact sheet shows the whole roll at a glance, no light table or loupe needed.</p>
+            <p>That's where FilmRoll Manager shines as well.</p>
+          </div>
           <a class="btn" href="#download">Download</a>
         </div>
         <div class="dcard contact">
@@ -101,7 +105,7 @@
         <h2>Get FilmRoll Manager.</h2>
         <p class="cta-txt">100% free, no account. Windows and Linux are on the way.</p>
         <div class="cta-btns">
-          <a class="btn dark js-dl" href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">Download for Mac</a>
+          <a class="btn dark js-dl" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.7.0/FilmRoll.Manager_0.7.0_aarch64.dmg">Download for Mac</a>
           <a class="btn dark ghost" href="#download">All downloads</a>
         </div>
       </div>
@@ -125,11 +129,14 @@
             <p>I'm a photographer, designer and maker of books. I've been shooting film for a while now, but every time the scans come back from the lab I struggle to organize my film rolls properly (it's a big problem!!!). That's why I created FilmRoll Manager.</p>
             <p>I hope it helps with your process too. Some of its features exist in other editing apps, but I wanted a more streamlined and minimal experience. And hey, it's free for everyone so check it out!</p>
           </div>
+          <div class="about-actions">
+          <a class="btn" href="#download">Download</a>
           <a class="btn white btn-social" href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener" aria-label="@michelehimself on Instagram (opens in a new tab)">
             <svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
             <span>@michelehimself</span>
             <svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
           </a>
+        </div>
         </div>
       </div>
     </section>
@@ -158,10 +165,10 @@
       <p class="intro"><strong>100% free.</strong> No account, no subscription. Everything happens on your computer, your scans are never uploaded anywhere.</p>
       <div class="dl-grid">
         <article class="dcard dl on">
-          <span class="os">Version 0.6.0</span>
+          <span class="os">Version 0.7.0</span>
           <h3>macOS</h3>
           <p>For Apple Silicon Macs. The app updates itself.</p>
-          <a class="btn js-dl" href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">Download .dmg</a>
+          <a class="btn js-dl" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.7.0/FilmRoll.Manager_0.7.0_aarch64.dmg">Download .dmg</a>
         </article>
         <article class="dcard dl soon">
           <span class="os">Planned</span>
@@ -183,7 +190,7 @@
   <footer class="wrap footer">
     <div class="rule"></div>
     <div class="row">
-      <span>FilmRoll Manager · by <a href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself</a> · v0.6.0</span>
+      <span>FilmRoll Manager · by <a href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself</a> · v0.7.0</span>
       <nav aria-label="Footer">
         <a href="impressum.html">Legal Notice</a>
         <a href="datenschutz.html">Privacy Policy</a>
@@ -200,7 +207,7 @@
   </button>
   <p class="eyebrow">Download started</p>
   <h3 id="dl-title">Thanks for downloading!</h3>
-  <p class="modal-lead">Your download should begin in a moment. If nothing happens, <a href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">start it again</a>.</p>
+  <p class="modal-lead">Your download should begin in a moment. If nothing happens, <a href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.7.0/FilmRoll.Manager_0.7.0_aarch64.dmg">start it again</a>.</p>
   <div class="rule"></div>
   <p class="eyebrow">First launch on macOS</p>
   <div class="warn" role="note">
@@ -231,7 +238,7 @@
     modal.addEventListener('click', function (e) { if (e.target === modal) { modal.close(); } });
     modal.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { modal.close(); }); });
   }
-  // hero image: rises slightly and grows a little while scrolling
+  // hero image: grows while scrolling
   var shot = document.querySelector('.hero .shot img');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (shot && !reduce) {
@@ -239,8 +246,8 @@
     var update = function () {
       var p = Math.min(Math.max(window.scrollY / 520, 0), 1);
       var e = 1 - Math.pow(1 - p, 1.6);
-      // starts 110px lower and 10% smaller, ends 40px higher at full size
-      shot.style.transform = 'translate3d(0,' + (110 - 150 * e).toFixed(2) + 'px,0) scale(' + (0.9 + 0.1 * e).toFixed(4) + ')';
+      // grows from 88% to full size while scrolling
+      shot.style.transform = 'scale(' + (0.88 + 0.12 * e).toFixed(4) + ')';
       ticking = false;
     };
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
