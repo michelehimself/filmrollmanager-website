@@ -126,7 +126,8 @@
           <p class="eyebrow">The Creator</p>
           <h2>Hi, I'm Michele.</h2>
           <div class="txt">
-            <p>I'm a photographer, designer and maker of books. I've been shooting film for a while now, but every time the scans come back from the lab I struggle to organize my film rolls properly (it's a big problem!!!). That's why I created FilmRoll Manager.</p>
+            <p>I'm a photographer, designer and maker of books.</p>
+            <p>I've been shooting film for a while now, but every time the scans come back from the lab I struggle to organize my film rolls properly (it's a big problem!!!). That's why I created FilmRoll Manager.</p>
             <p>I hope it helps with your process too. Some of its features exist in other editing apps, but I wanted a more streamlined and minimal experience. And hey, it's free for everyone so check it out!</p>
           </div>
           <div class="about-actions">
@@ -246,8 +247,8 @@
     var update = function () {
       var p = Math.min(Math.max(window.scrollY / 520, 0), 1);
       var e = 1 - Math.pow(1 - p, 1.6);
-      // grows from 88% to full size while scrolling
-      shot.style.transform = 'scale(' + (0.88 + 0.12 * e).toFixed(4) + ')';
+      // grows from 92% to full size while scrolling
+      shot.style.transform = 'scale(' + (0.92 + 0.08 * e).toFixed(4) + ')';
       ticking = false;
     };
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
