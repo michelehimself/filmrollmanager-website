@@ -101,7 +101,7 @@
         <h2>Get FilmRoll Manager.</h2>
         <p class="cta-txt">100% free, no account. Windows and Linux are on the way.</p>
         <div class="cta-btns">
-          <a class="btn dark" href="https://github.com/michelehimself/filmroll-manager-releases/releases/latest">Download for Mac</a>
+          <a class="btn dark js-dl" href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">Download for Mac</a>
           <a class="btn dark ghost" href="#download">All downloads</a>
         </div>
       </div>
@@ -109,12 +109,24 @@
 
     <section class="wrap section" id="about">
       <div class="about">
-        <div class="portrait" role="img" aria-label="Photo of Michele (placeholder)">Photo</div>
+        <figure class="about-photo">
+          <div class="portrait has-photo">
+            <img src="assets/michele.jpg" width="900" height="1599" alt="Portrait of Michele leaning on an iron fence in autumn, with a film camera around his neck">
+            <div class="credit" tabindex="0" role="note" aria-label="Photo credit: Photo by @luisahauser">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>Photo by @luisahauser</span>
+            </div>
+          </div>
+        </figure>
         <div>
           <p class="eyebrow">About</p>
           <h2>Hi, I'm Michele.</h2>
           <p class="txt">I'm a photographer who shoots film. After every lab visit I spent far too long fixing dates, file names and metadata by hand, so I built the tool I wished existed. I'm sharing it for free, in case it helps you too.</p>
-          <a class="btn white" href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself on Instagram</a>
+          <a class="btn white btn-social" href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener" aria-label="@michelehimself on Instagram (opens in a new tab)">
+            <svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+            <span>@michelehimself</span>
+            <svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -124,7 +136,7 @@
       <h2>Good to know.</h2>
       <div class="faq-list">
         <div class="rule"></div>
-        <details><summary>Does it change my images?</summary><p>Only metadata is written. The picture data stays untouched. Still, it is a good habit to try it on a copy of a scan folder first.</p></details>
+        <details><summary>Does FilmRoll Manager change my images?</summary><p>Only metadata is written. The picture data stays untouched. Still, it is a good habit to try FilmRoll Manager on a copy of a scan folder first.</p></details>
         <div class="rule"></div>
         <details><summary>Which file types are supported?</summary><p>JPG, PNG and TIFF. Star ratings currently work for JPEG files only.</p></details>
         <div class="rule"></div>
@@ -143,10 +155,10 @@
       <p class="intro"><strong>100% free.</strong> No account, no subscription. Everything happens on your computer, your scans are never uploaded anywhere.</p>
       <div class="dl-grid">
         <article class="dcard dl on">
-          <span class="os">Version 0.5.1</span>
+          <span class="os">Version 0.6.0</span>
           <h3>macOS</h3>
           <p>For Apple Silicon Macs. The app updates itself.</p>
-          <a class="btn" href="https://github.com/michelehimself/filmroll-manager-releases/releases/latest">Download .dmg</a>
+          <a class="btn js-dl" href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">Download .dmg</a>
         </article>
         <article class="dcard dl soon">
           <span class="os">Planned</span>
@@ -161,13 +173,14 @@
           <a class="btn" aria-disabled="true" href="#download" tabindex="-1">Coming soon</a>
         </article>
       </div>
+
     </section>
   </main>
 
   <footer class="wrap footer">
     <div class="rule"></div>
     <div class="row">
-      <span>FilmRoll Manager · by <a href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself</a> · v0.5.1</span>
+      <span>FilmRoll Manager · by <a href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself</a> · v0.6.0</span>
       <nav aria-label="Footer">
         <a href="impressum.html">Legal Notice</a>
         <a href="datenschutz.html">Privacy Policy</a>
@@ -177,5 +190,52 @@
   </footer>
 
 </div>
+
+<dialog class="modal" id="dl-modal" aria-labelledby="dl-title">
+  <button class="modal-close" type="button" aria-label="Close" data-close>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+  </button>
+  <p class="eyebrow">Download started</p>
+  <h3 id="dl-title">Thanks for downloading!</h3>
+  <p class="modal-lead">Your download should begin in a moment. If nothing happens, <a href="https://github.com/michelehimself/filmroll-manager-releases/releases/download/v0.6.0/FilmRoll.Manager_0.6.0_aarch64.dmg">start it again</a>.</p>
+  <div class="rule"></div>
+  <p class="eyebrow">First launch on macOS</p>
+  <div class="warn" role="note">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    <p><strong>Heads up:</strong> macOS will most likely block the app the first time you open it. That is expected. The steps below fix it.</p>
+  </div>
+  <p class="install-lead">FilmRoll Manager is not signed with an Apple developer account, so macOS asks for confirmation the first time you open it.</p>
+  <ol>
+    <li>Open the <code>.dmg</code> and drag FilmRoll Manager into Applications.</li>
+    <li>Right-click the app and choose “Open”.</li>
+  </ol>
+  <p class="install-lead">If macOS still refuses to open it, run this command once in Terminal:</p>
+  <div class="cmd">
+    <code id="cmd-text">xattr -dr com.apple.quarantine "/Applications/FilmRoll Manager.app"</code>
+    <button class="copy" type="button" data-copy="cmd-text" aria-label="Copy command">Copy</button>
+  </div>
+</dialog>
+<script>
+(function () {
+  var modal = document.getElementById('dl-modal');
+  document.querySelectorAll('.js-dl').forEach(function (a) {
+    a.addEventListener('click', function () {
+      // the link keeps working: the download starts, the dialog explains the first launch
+      if (modal && modal.showModal && !modal.open) { modal.showModal(); }
+    });
+  });
+  if (modal) {
+    modal.addEventListener('click', function (e) { if (e.target === modal) { modal.close(); } });
+    modal.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { modal.close(); }); });
+  }
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = document.getElementById(b.dataset.copy).textContent;
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function () {}); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
