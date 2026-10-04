@@ -55,7 +55,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
 .hero .lead { font-size: 20px; line-height: 27px; max-width: 528px; margin: 34px auto 0; }
 .hero .cta { display: flex; justify-content: center; gap: 14px; margin-top: 34px; }
 .hero .hero-note { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(--soft); }
-.hero .shot { margin: 84px -2.09% 0; width: 104.18%; }
+.hero .shot { margin: 84px -5.07% 0; width: 110.13%; }
+.hero .shot picture { display: block; }
 .hero .shot img { width: 100%; height: auto; transform-origin: 50% 50%; will-change: transform; }
 
 /* sections */
@@ -87,6 +88,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
 .dcard.fav { padding: 44px 36px 0; height: 476px; }
 .dcard.fav p { margin-top: 20px; max-width: 358px; }
 .dcard.fav .pic { position: absolute; left: -1px; top: 196px; width: 652px; height: 536px; overflow: hidden; pointer-events: none; }
+.dcard.fav .pic picture { display: contents; }
 .dcard.fav .pic img { width: 100%; height: 100%; object-fit: cover; max-width: none; }
 .dcard.fav .pic.gear img { position: absolute; width: 102.27%; height: auto; left: 2.79%; top: 2.64%; }
 
