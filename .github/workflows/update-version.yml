@@ -1,0 +1,42 @@
+name: Update version from latest release
+
+on:
+  schedule:
+    - cron: "17 * * * *"      # hourly
+  workflow_dispatch:           # manual run from the Actions tab
+  repository_dispatch:
+    types: [app-release]       # optional: can be pinged from the app repo
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-version
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync version and download link
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update-version.py
+
+      - name: Commit and publish if something changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update version and download link to latest release"
+          git push
+          # a push made with GITHUB_TOKEN does not always trigger a Pages build, so ask for one
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
