@@ -225,11 +225,8 @@
   <button class="modal-close" type="button" aria-label="Close" data-close>
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
   </button>
-  <p class="eyebrow">Download started</p>
-  <h3 id="dl-title">Thanks for downloading!</h3>
-  <p class="modal-lead">Your download should begin in a moment. If nothing happens, <a href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.7.1/FilmRoll.Manager_0.7.1_aarch64.dmg">start it again</a>.</p>
-  <div class="rule"></div>
-  <p class="eyebrow">First launch on macOS</p>
+  <p class="eyebrow">Download for macOS</p>
+  <h3 id="dl-title">Before you download</h3>
   <div class="warn" role="note">
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
     <p><strong>Heads up:</strong> macOS will most likely block the app the first time you open it. That is expected. The steps below fix it.</p>
@@ -242,18 +239,28 @@
   <p class="install-lead">If macOS still refuses to open it, run this command once in Terminal:</p>
   <div class="cmd">
     <code id="cmd-text">xattr -dr com.apple.quarantine "/Applications/FilmRoll Manager.app"</code>
-    <button class="copy" type="button" data-copy="cmd-text" aria-label="Copy command">Copy</button>
+    <button class="copy" type="button" data-copy="cmd-text" aria-label="Copy command" title="Copy">
+      <svg class="ic-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <svg class="ic-done" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+    </button>
+  </div>
+  <div class="modal-actions">
+    <a class="btn" id="dl-confirm" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.7.1/FilmRoll.Manager_0.7.1_aarch64.dmg">Yes, I understand – download</a>
   </div>
 </dialog>
 <script>
 (function () {
   var modal = document.getElementById('dl-modal');
   document.querySelectorAll('.js-dl').forEach(function (a) {
-    a.addEventListener('click', function () {
-      // the link keeps working: the download starts, the dialog explains the first launch
-      if (modal && modal.showModal && !modal.open) { modal.showModal(); }
+    a.addEventListener('click', function (e) {
+      // no automatic download: explain the first launch first, download starts from the dialog button
+      if (modal && modal.showModal) { e.preventDefault(); if (!modal.open) { modal.showModal(); } }
     });
   });
+  var confirmBtn = document.getElementById('dl-confirm');
+  if (confirmBtn && modal) {
+    confirmBtn.addEventListener('click', function () { setTimeout(function () { modal.close(); }, 400); });
+  }
   if (modal) {
     modal.addEventListener('click', function (e) { if (e.target === modal) { modal.close(); } });
     modal.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { modal.close(); }); });
@@ -277,8 +284,16 @@
   document.querySelectorAll('.copy').forEach(function (b) {
     b.addEventListener('click', function () {
       var t = document.getElementById(b.dataset.copy).textContent;
-      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
-      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function () {}); }
+      var done = function () { b.classList.add('copied'); setTimeout(function () { b.classList.remove('copied'); }, 1800); };
+      var legacy = function () {
+        // fallback for browsers without the async clipboard API
+        var ta = document.createElement('textarea');
+        ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta); ta.select();
+        try { if (document.execCommand('copy')) { done(); } } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, legacy); } else { legacy(); }
     });
   });
 })();

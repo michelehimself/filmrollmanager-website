@@ -119,8 +119,11 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
 .modal code { font-family: var(--mono); font-weight: 500; font-size: 13px; }
 .cmd { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 14px; background: #fff; border: 1px solid rgba(0,0,0,.2); border-radius: 10px; padding: 10px 10px 10px 16px; }
 .cmd code { font-size: 13px; white-space: normal; word-break: break-word; line-height: 1.5; }
-.copy { flex: none; font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: var(--amber); border: 1px solid rgba(0,0,0,.2); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
-.copy:hover { background: var(--amber-hover); }
+.copy { flex: none; width: 34px; height: 34px; display: grid; place-items: center; color: var(--ink); background: transparent; border: 1px solid rgba(0,0,0,.2); border-radius: 8px; cursor: pointer; }
+.copy:hover { background: #fafafa; }
+.copy .ic-done { display: none; }
+.copy.copied .ic-copy { display: none; }
+.copy.copied .ic-done { display: block; }
 .dl-note { margin-top: 28px; max-width: 520px; color: var(--soft); }
 
 /* about */
@@ -218,6 +221,7 @@ details p { max-width: 640px; margin-top: 14px; font-size: 18px; line-height: 25
 .modal h3 { font-size: 37px; line-height: 1.08; letter-spacing: -.03em; margin-top: 14px; }
 .modal .modal-lead { margin-top: 14px; }
 .modal .rule { margin: 28px 0 24px; }
+.modal-actions { margin-top: 28px; display: flex; justify-content: flex-end; }
 .modal-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; display: grid; place-items: center; background: #fff; border: 1px solid rgba(0,0,0,.2); border-radius: 10px; cursor: pointer; color: var(--ink); }
 .modal-close:hover { background: #fafafa; }
 @media (max-width: 720px) { .modal { padding: 28px 22px 24px; } .modal h3 { font-size: 30px; } .cmd code { white-space: normal; word-break: break-all; } }
