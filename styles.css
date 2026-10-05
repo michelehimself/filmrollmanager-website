@@ -230,3 +230,4 @@ details p { max-width: 640px; margin-top: 14px; font-size: 18px; line-height: 25
 .warn svg { flex: none; margin-top: 1px; }
 .warn p { font-size: 15px; line-height: 21px; }
 .warn strong { font-weight: 600; }
+.install-lead strong { font-weight: 600; }
