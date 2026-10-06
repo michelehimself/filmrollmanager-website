@@ -3,7 +3,7 @@
 @font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/plexmono-500.woff2") format("woff2"); }
 
 :root {
-  --canvas: rgb(175, 175, 175);
+  --canvas: #fff;
   --page: #f4f4f4;
   --card: #e6e6e6;
   --ink: #000;
@@ -27,7 +27,7 @@ a { color: inherit; }
 p { margin: 0; }
 h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
 
-.page { max-width: 1146px; margin-inline: auto; background-color: var(--page); background-image: url("assets/grain.png"); background-size: 176px 176px; background-repeat: repeat; overflow: hidden; }
+.page { width: min(1146px, calc(100% - 32px)); margin: 16px auto; border: 1px solid rgba(0, 0, 0, .14); border-radius: 40px; background-color: var(--page); background-image: url("assets/grain.png"); background-size: 176px 176px; background-repeat: repeat; overflow: hidden; }
 .wrap { padding-inline: var(--pad); }
 
 /* dashed rules, exactly like the design (6px dash, 6px gap) */
@@ -178,6 +178,7 @@ details p { max-width: 640px; margin-top: 14px; font-size: 18px; line-height: 25
   .about { grid-template-columns: 300px 1fr; gap: 48px; }
 }
 @media (max-width: 720px) {
+  .page { border-radius: 28px; }
   :root { --pad: 22px; }
   .nav { height: 84px; }
   .nav nav { display: none; }
