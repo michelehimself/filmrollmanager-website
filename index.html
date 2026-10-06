@@ -48,7 +48,7 @@
         <a class="btn" href="#download">Download</a>
         <a class="btn white" href="#how">How it works</a>
       </div>
-      <p class="hero-note">Currently available for macOS.</p>
+      <p class="hero-note">Available for macOS and Windows (beta).</p>
       <div class="shot"><picture>
           <source srcset="assets/app-manager.webp" type="image/webp">
           <img src="assets/app-manager.png" width="2000" height="1373" alt="The FilmRoll Manager window showing a list of scanned frames with camera, lens, film, rating and date">
@@ -120,9 +120,9 @@
 
     <section class="wrap section" id="get">
       <div class="cta-big">
-        <p class="eyebrow">Free for Mac</p>
+        <p class="eyebrow">Free for Mac and Windows</p>
         <h2>Get FilmRoll Manager.</h2>
-        <p class="cta-txt">100% free, no account. Windows and Linux are on the way.</p>
+        <p class="cta-txt">100% free, no account. Windows is in beta, Linux is on the way.</p>
         <div class="cta-btns">
           <a class="btn dark js-dl" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_aarch64.dmg">Download for Mac</a>
           <a class="btn dark ghost" href="#download">All downloads</a>
@@ -166,7 +166,7 @@
       <h2>Good to know.</h2>
       <div class="faq-list">
         <div class="rule"></div>
-        <details><summary>What is FilmRoll Manager?</summary><p>FilmRoll Manager is a free desktop app for macOS that prepares your film scans from the lab for your photo library. It can reverse the frame order of a roll, embed date, camera, lens and film as metadata, rename a whole roll with a template and create printable contact sheets. Everything happens on your computer, your scans are never uploaded.</p></details>
+        <details><summary>What is FilmRoll Manager?</summary><p>FilmRoll Manager is a free desktop app for macOS and Windows (beta) that prepares your film scans from the lab for your photo library. It can reverse the frame order of a roll, embed date, camera, lens and film as metadata, rename a whole roll with a template and create printable contact sheets. Everything happens on your computer, your scans are never uploaded.</p></details>
         <div class="rule"></div>
         <details><summary>Does FilmRoll Manager change my images?</summary><p>Only metadata is written. The picture data stays untouched. Still, it is a good habit to try FilmRoll Manager on a copy of a scan folder first.</p></details>
         <div class="rule"></div>
@@ -192,16 +192,16 @@
           <p>For Apple Silicon Macs. The app updates itself.</p>
           <a class="btn js-dl" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_aarch64.dmg">Download .dmg</a>
         </article>
-        <article class="dcard dl soon">
-          <span class="os">Planned</span>
-          <h3>Windows <span class="badge">Soon</span></h3>
-          <p>The app is built to run on Windows. A download follows as soon as the build is ready.</p>
-          <a class="btn" aria-disabled="true" href="#download" tabindex="-1">Coming soon</a>
+        <article class="dcard dl on">
+          <span class="os">Version 0.8.0 · Beta</span>
+          <h3>Windows <span class="badge">Beta</span></h3>
+          <p>For 64-bit Windows. New and still being tested, so please tell me if something does not work.</p>
+          <a class="btn js-dl" data-modal="dl-modal-win" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_x64-setup.exe">Download .exe</a>
         </article>
         <article class="dcard dl soon">
           <span class="os">Planned</span>
           <h3>Linux <span class="badge">Soon</span></h3>
-          <p>Planned as .deb and AppImage, on the same schedule as Windows.</p>
+          <p>Planned as .deb and AppImage.</p>
           <a class="btn" aria-disabled="true" href="#download" tabindex="-1">Coming soon</a>
         </article>
       </div>
@@ -247,26 +247,46 @@
     </button>
   </div>
   <div class="modal-actions">
-    <a class="btn" id="dl-confirm" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_aarch64.dmg">Yes, I understand – download</a>
+    <a class="btn js-confirm" id="dl-confirm" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_aarch64.dmg">Yes, I understand – download</a>
+  </div>
+</dialog>
+
+<dialog class="modal" id="dl-modal-win" aria-labelledby="dl-title-win">
+  <button class="modal-close" type="button" aria-label="Close" data-close>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+  </button>
+  <p class="eyebrow">Download for Windows (beta)</p>
+  <h3 id="dl-title-win">Before you download</h3>
+  <div class="warn" role="note">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    <p><strong>Heads up:</strong> Windows will most likely block the installer the first time you run it. That is expected.</p>
+  </div>
+  <p class="install-lead">FilmRoll Manager is not signed with a paid Windows certificate, so Windows SmartScreen warns about it.</p>
+  <ol>
+    <li>Run the downloaded <code>.exe</code>.</li>
+    <li>At “Windows protected your PC”, click <strong>More info</strong>.</li>
+    <li>Then click <strong>Run anyway</strong>.</li>
+  </ol>
+  <div class="modal-actions">
+    <a class="btn js-confirm" id="dl-confirm-win" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_x64-setup.exe">Yes, I understand – download</a>
   </div>
 </dialog>
 <script>
 (function () {
-  var modal = document.getElementById('dl-modal');
+  // Download buttons open a dialog first (explains the first launch); the download starts from the dialog's confirm button.
   document.querySelectorAll('.js-dl').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      // no automatic download: explain the first launch first, download starts from the dialog button
-      if (modal && modal.showModal) { e.preventDefault(); if (!modal.open) { modal.showModal(); } }
+      var m = document.getElementById(a.dataset.modal || 'dl-modal');
+      if (m && m.showModal) { e.preventDefault(); if (!m.open) { m.showModal(); } }
     });
   });
-  var confirmBtn = document.getElementById('dl-confirm');
-  if (confirmBtn && modal) {
-    confirmBtn.addEventListener('click', function () { setTimeout(function () { modal.close(); }, 400); });
-  }
-  if (modal) {
-    modal.addEventListener('click', function (e) { if (e.target === modal) { modal.close(); } });
-    modal.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { modal.close(); }); });
-  }
+  document.querySelectorAll('dialog.modal').forEach(function (m) {
+    m.addEventListener('click', function (e) { if (e.target === m) { m.close(); } });
+    m.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { m.close(); }); });
+    m.querySelectorAll('.js-confirm').forEach(function (c) {
+      c.addEventListener('click', function () { setTimeout(function () { m.close(); }, 400); });
+    });
+  });
   // hero image: grows while scrolling
   var shot = document.querySelector('.hero .shot img');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

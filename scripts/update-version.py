@@ -40,6 +40,15 @@ def pick_dmg(assets):
     return dmgs[0]
 
 
+def pick_exe(assets):
+    """The 64-bit Windows installer (name ends with -setup.exe)."""
+    exes = [a for a in assets if a["name"].lower().endswith("-setup.exe")]
+    for a in exes:
+        if "x64" in a["name"].lower():
+            return a
+    return exes[0] if exes else None
+
+
 def main():
     release = latest_release()
     version = release["tag_name"].lstrip("v")
@@ -49,10 +58,16 @@ def main():
     if dmg is None:
         sys.exit("Latest release has no .dmg asset yet, leaving the site unchanged.")
     url = dmg["browser_download_url"]
+    exe = pick_exe(release.get("assets", []))
+    exe_url = exe["browser_download_url"] if exe else None
     print(f"Latest release: v{version} -> {url}")
+    print(f"Windows installer: {exe_url or 'none in this release, leaving the Windows link unchanged'}")
 
     link_re = re.compile(
         r"https://github\.com/" + re.escape(REPO) + r"/releases/download/[^\"'<>\s]+\.dmg"
+    )
+    exe_re = re.compile(
+        r"https://github\.com/" + re.escape(REPO) + r"/releases/download/[^\"'<>\s]+-setup\.exe"
     )
     changed = []
     for page in PAGES:
@@ -60,6 +75,8 @@ def main():
         with open(path, encoding="utf-8") as f:
             old = f.read()
         new = link_re.sub(url, old)
+        if exe_url:
+            new = exe_re.sub(exe_url, new)
         new = re.sub(r"(Version )\d+\.\d+\.\d+", r"\g<1>" + version, new)
         new = re.sub(r"(· v)\d+\.\d+\.\d+(</span>)", r"\g<1>" + version + r"\g<2>", new)
         if new != old:
