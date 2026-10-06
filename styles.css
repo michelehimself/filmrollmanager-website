@@ -233,3 +233,14 @@ details p { max-width: 640px; margin-top: 14px; font-size: 18px; line-height: 25
 .warn strong { font-weight: 600; }
 .install-lead strong { font-weight: 600; }
 
+
+/* top banner: docked to the top edge, same width as the page card */
+.topbar { width: min(1146px, calc(100% - 32px)); margin: 0 auto; padding: 10px 22px 12px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #000; color: #fff; border-radius: 0 0 20px 20px; font-size: 15px; line-height: 21px; }
+.topbar p { margin: 0; }
+.topbar-name { color: #fff; font-weight: 600; text-decoration: none; }
+.topbar-name { transition: opacity .15s; }
+.topbar-name:hover { opacity: .7; }
+.topbar-link { flex: none; display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.62); text-decoration: none; font-weight: 400; font-size: 14px; padding: 4px 2px; }
+.topbar-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.topbar + .page { margin-top: 8px; }
+@media (max-width: 720px) { .topbar { padding: 10px 16px 12px 18px; font-size: 14px; } .topbar-link span { display: none; } }

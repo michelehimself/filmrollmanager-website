@@ -24,6 +24,14 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="topbar">
+  <p>This project is built by <a class="topbar-name" href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener">@michelehimself</a>. Feel free to reach out.</p>
+  <a class="topbar-link" href="https://www.instagram.com/michelehimself" target="_blank" rel="noopener" aria-label="Message me on Instagram (opens in a new tab)">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+    <span>Instagram</span>
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+  </a>
+</div>
 <div class="page">
 
   <header class="wrap" id="top">
@@ -271,12 +279,29 @@
     <a class="btn js-confirm" id="dl-confirm-win" href="https://github.com/michelehimself/filmroll-manager/releases/download/v0.8.0/FilmRoll.Manager_0.8.0_x64-setup.exe">Yes, I understand – download</a>
   </div>
 </dialog>
+
+<dialog class="modal" id="dl-modal-mobile" aria-labelledby="dl-title-mobile">
+  <button class="modal-close" type="button" aria-label="Close" data-close>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+  </button>
+  <p class="eyebrow">Desktop only</p>
+  <h3 id="dl-title-mobile">Open this on your computer</h3>
+  <p class="modal-lead">FilmRoll Manager is built for desktop systems (macOS and Windows), so there is nothing to download for phones and tablets. Visit filmrollmanager.com on your computer to get it.</p>
+</dialog>
 <script>
 (function () {
+  function isMobile() {
+    var ua = navigator.userAgent || '';
+    if (navigator.userAgentData && navigator.userAgentData.mobile) { return true; }
+    if (/Android|iPhone|iPad|iPod|Mobile|CriOS|FxiOS/i.test(ua)) { return true; }
+    // iPadOS reports itself as a Mac, but it has a touch screen
+    return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+  }
   // Download buttons open a dialog first (explains the first launch); the download starts from the dialog's confirm button.
   document.querySelectorAll('.js-dl').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      var m = document.getElementById(a.dataset.modal || 'dl-modal');
+      // phones and tablets cannot run the app: show a short notice instead of the download dialog
+      var m = document.getElementById(isMobile() ? 'dl-modal-mobile' : (a.dataset.modal || 'dl-modal'));
       if (m && m.showModal) { e.preventDefault(); if (!m.open) { m.showModal(); } }
     });
   });
